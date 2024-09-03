@@ -1,11 +1,11 @@
-import customtkinter as ctk  # importando a biblioteca
+import customtkinter as ctk
 from datetime import datetime, timedelta
 
 app = ctk.CTk()
 app.title("TimerTurnOFF")
 app.geometry("400x300+390+240")
 app.resizable(width=False, height=False)
-ctk.set_appearance_mode("System")  # Modes: "System" (standard), "Dark", "Light"
+ctk.set_appearance_mode("System")
 
 desligamento = 'shutdown -s -f -t'
 cancelar = 'shutdown -a'
@@ -17,8 +17,8 @@ def button_click_event():
                                            "\n(Digite 0 para cancelar um agendamento já definido)", title="Timer",
                                       font=("Rosales", 15))
     input_dialog.geometry("410x200+387+300")
-    quantos = (int(input_dialog.get_input()))  # Recebe a entrada e converte para inteiro
-    cmd = desligamento + ' ' + str(quantos * 60)  # Multiplica os minutos por 60 para obter segundos
+    quantos = (int(input_dialog.get_input()))
+    cmd = desligamento + ' ' + str(quantos * 60)
 
     if quantos > 0:
         desligar(cmd)
@@ -34,8 +34,8 @@ info_box1 = None
 
 
 def horario_definido(novo_horario):
-    global info_box1  # Referência global para a variável
-    if info_box1:  # Se já existe, destrói antes de criar o novo
+    global info_box1
+    if info_box1:
         info_box1.destroy()
 
     info_box1 = ctk.CTkLabel(app, width=300, height=10, corner_radius=10,
@@ -46,8 +46,8 @@ def horario_definido(novo_horario):
 
 
 def remover_horario():
-    global info_box1  # Referência global para a variável
-    if info_box1:  # Se já existe, destrói antes de criar o novo
+    global info_box1
+    if info_box1:
         info_box1.destroy()
 
     info_box1 = ctk.CTkLabel(app, width=300, height=10, corner_radius=10,
